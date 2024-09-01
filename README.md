@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This is s proof of concept off app, where specific tech stack was used:
+This is s proof of concept, where specific tech stack was used:
  
  - Nx monorepo
  -  API - Tanstack Query (React Query)
