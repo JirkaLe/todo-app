@@ -1,18 +1,35 @@
 {
   "root": true,
   "ignorePatterns": ["!**/*"],
-  "plugins": ["@nx"],
+  "plugins": ["@nrwl/nx", "prettier", "cypress"], // Added "cypress" plugin here
+  "extends": [
+    "plugin:@nrwl/nx/react",
+    "plugin:@nrwl/nx/typescript",
+    "plugin:@nrwl/nx/javascript",
+    "plugin:prettier/recommended"
+  ],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+      "extends": ["plugin:@nrwl/nx/typescript"],
+      "rules": {
+        "prettier/prettier": ["error"]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nx/javascript"],
+      "extends": ["plugin:@nrwl/nx/javascript"],
+      "rules": {
+        "prettier/prettier": ["error"]
+      }
+    },
+    {
+      "files": ["cypress/**/*.js", "cypress/**/*.jsx", "cypress/**/*.ts", "cypress/**/*.tsx"], // Override for Cypress files
+      "env": {
+        "cypress/globals": true
+      },
+      "extends": ["plugin:cypress/recommended"],
       "rules": {}
     }
-  ],
-  "extends": ["plugin:@nx/react"]
+  ]
 }
